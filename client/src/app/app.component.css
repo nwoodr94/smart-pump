@@ -1,0 +1,40 @@
+form {
+    padding-top: 5vh;
+    width: 85%;
+    max-width: 36em;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 90vh;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  img {
+    height: 15%;
+    width: 10%;
+    min-height: 100px;
+    min-width: 150px;
+  }
+  
+  
+  div {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  button {
+    align-content: center;
+  }
+  
+  
+  @media only screen and (max-width: 875px) {
+      .text {
+        padding-top: 40vh;
+      }
+      .text h2 {
+        font-size: 3rem;
+      }
+    }
