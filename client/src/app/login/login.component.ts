@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
       this.authenticateService.post(this.user).subscribe(
         (user: User) => {
           console.log(user._id);
-          this.authenticateService.isAuthenticated();
           this.router.navigate(['/user'], { state: {user} })
         },
         (err: any) => {
