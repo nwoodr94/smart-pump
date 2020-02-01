@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { AuthenticateService } from './authenticate.service';
 import { AuthGuardService } from './auth-guard.service';
+import { DataService } from './data.service';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { AuthGuardService } from './auth-guard.service';
     JwtHelperService,
     AuthenticateService,
     AuthGuardService,
+    DataService,
     {provide: APP_BASE_HREF, useValue: '/'}
   ],
   bootstrap: [AppComponent]

@@ -1,81 +1,86 @@
+// Express
 const express = require('express');
 const app = express();
 const cors = require('cors');
 const PORT = 8000;
 const HOST = 'localhost';
-const corsOptions = {
-  origin: 'http://localhost:4200'
-}
-const bodyParser = require('body-parser')
+const corsOptions = { origin: 'http://localhost:4200'}
+const bodyParser = require('body-parser');
 
-
-app.use(cors(corsOptions));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// JWT
+const jwt = require('jsonwebtoken');
 
 // LowDB
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 const adapter = new FileSync('../data/users.json')
 const db = low(adapter)
-
-// LowDB Default
 db.defaults({ users: [] })
   .value();
 
+// Middleware
+app.use(cors(corsOptions));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
+// Server 
+app.listen(PORT, HOST, () => {
+  console.log(`Server is listening on ${HOST}:${PORT}`);
+})
 
-// // UserRouter
-// const usersRouter = require('./users.js');
-// app.use('/', usersRouter);
+//Model
+let user = require('./user-model');
 
-
+// User Login 
 app.post('/', function (req, res, next) {
 
-  console.log("User Received");
+  user = getUser(req.body.email, req.body.password);
 
-  let email = req.body.email;
-  let password = req.body.password;
-
-
-  let user = getUser(email, password);
-
-
+  // If the user exists, send it back, else send 404
   if (user) {
-    console.log(user);
-    res.send(user);
+    let payload = { subject: user._id}
+    let token = jwt.sign(payload, "secretKey");
+    user.token = token;
+
+    res.status(200).send(user);
   } else {
-    console.log("User does not exist");
     res.status('404').send();
     return next();
   }
 
 })
 
-app.listen(PORT, HOST, () => {
-  console.log(`Server is listening on port ${PORT}`);
+// User Edit
+app.patch('/', function (req, res, next) {
+
+    updateUser(req.body.email, req.body.newEmail, req.body.password, req.body.newPassword);
+    res.status(200).send(user);
 })
 
+// Helpers
 function getUser(_email, _password) {
 
-  let user = db.get('users')
+  user = db.get('users')
     .find({ email: _email, password: _password })
     .value();
 
   return user;
 }
 
+function updateUser(_email, _newEmail, _password, _newPassword) {
 
-class User {
-  _id
-  guid
-  isActive
-  balance
-  picture
-  company
-  email
-  password
-  phone
-  address
+  console.log("Update called");
+  db.get('users')
+    .find({ email: _email })
+    .assign({ email: _newEmail, password: _newPassword})
+    .write();  
+
+  user = db.get('users')
+    .find({ email: _newEmail, password: _newPassword })
+    .value();
+
+  console.log(user);
+
+  return user;
 }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticateService } from '../authenticate.service';
 import { User } from '../user-model';
 import { Router } from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-login',
@@ -10,19 +10,19 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authenticateService: AuthenticateService,
-    private router: Router) { }
+  constructor(
+    private router: Router,
+    private dataService: DataService) {}
 
   ngOnInit() {
   }
 
-  user = new User()
+  user: User = new User()
 
   login(email, password) {
 
     if (email == ""
       || password == "") {
-      this.user.validated = false;
       return;
     }
     else {
@@ -30,10 +30,12 @@ export class LoginComponent implements OnInit {
       this.user.password = password;
 
 
-      this.authenticateService.post(this.user).subscribe(
+      this.dataService.post(this.user).subscribe(
         (user: User) => {
-          console.log(user._id);
-          this.router.navigate(['/user'], { state: {user} })
+          console.log("Authenticated");
+          this.dataService.setData(user);
+          localStorage.setItem('token', user.token);
+          this.router.navigate(['/user', user._id]);
         },
         (err: any) => {
           console.log(err);

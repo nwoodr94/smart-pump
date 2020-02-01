@@ -16,6 +16,7 @@ export class User {
     phone: string;
     address: string;
 
-    
-    validated: boolean;
+    token: string;
+    newEmail: string;
+    newPassword: string;
 }

@@ -1,6 +1,7 @@
 <body>
     <div class="content">
       <img src="../../assets/logo.png" />
+      <br />
       <form>
         <div class="form-group">
           <label for="exampleInputEmail1">Username</label>
@@ -10,7 +11,8 @@
           <label for="exampleInputPassword1">Password</label>
           <input type="password" class="form-control" #password>
         </div>
+        <br />
         <button type="submit" class="btn btn-secondary" (click)="login(email.value, password.value)">Login</button>
       </form>
     </div>
-  </body>
+</body>
