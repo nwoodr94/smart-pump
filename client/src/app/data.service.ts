@@ -9,7 +9,7 @@ export class DataService{
 
   constructor(private http: HttpClient) {}
 
-  // User Handling
+  // User handling between login and profile
   private user: User; 
 
   setData(user: User){
@@ -21,7 +21,7 @@ export class DataService{
   }
 
 
-  // HTTP Methods and Options
+  // Application HTTP Methods
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
