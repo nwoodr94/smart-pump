@@ -9,6 +9,8 @@ export class AppComponent implements OnInit {
 
   constructor() {}
 
+  title = 'Smart Pump';
+
   ngOnInit() {
   }
 }

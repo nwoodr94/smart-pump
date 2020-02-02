@@ -19,8 +19,10 @@ export class LoginComponent implements OnInit {
 
   user: User = new User()
 
+  // Login the user
   login(email, password) {
 
+    // Form Validation
     if (email == ""
       || password == "") {
       return;
@@ -29,10 +31,9 @@ export class LoginComponent implements OnInit {
       this.user.email = email;
       this.user.password = password;
 
-
+      // Post the credentials to Node, and navigate to profile with user object in context
       this.dataService.post(this.user).subscribe(
         (user: User) => {
-          console.log("Authenticated");
           this.dataService.setData(user);
           localStorage.setItem('token', user.token);
           this.router.navigate(['/user', user._id]);

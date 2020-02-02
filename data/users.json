@@ -13,11 +13,11 @@
         "last": "Briggs"
       },
       "company": "GEEKNET",
-      "email": "a",
-      "password": "b",
+      "email": "test",
+      "password": "test",
       "phone": "+1 (936) 451-3590",
       "address": "121 National Drive, Cotopaxi, Michigan, 8240",
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoiNTQxMDk1M2ViMGUwYzBhZTI1NjA4Mjc3IiwiaWF0IjoxNTgwNTM5ODMyfQ.5I-9TFtBSzJCk1u7J6plR-BCb_IutB0Rn6fTrLvhSkQ"
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoiNTQxMDk1M2ViMGUwYzBhZTI1NjA4Mjc3IiwiaWF0IjoxNTgwNjI0OTAwfQ.MASp_Y_3fzBFw2gQrnsskQwMdtY0Fm_NhpNmhqIaI60"
     },
     {
       "_id": "5410953eee9a5b30c3eea476",

@@ -43,6 +43,7 @@ app.post('/', function (req, res, next) {
     user.token = token;
 
     res.status(200).send(user);
+    return next();
   } else {
     res.status('404').send();
     return next();
@@ -55,6 +56,7 @@ app.patch('/', function (req, res, next) {
 
     updateUser(req.body.email, req.body.newEmail, req.body.password, req.body.newPassword);
     res.status(200).send(user);
+    return next();
 })
 
 // Helpers
@@ -69,7 +71,11 @@ function getUser(_email, _password) {
 
 function updateUser(_email, _newEmail, _password, _newPassword) {
 
-  console.log("Update called");
+  console.log(_email);
+  console.log(_newEmail);
+  console.log(_password);
+  console.log(_newPassword);
+
   db.get('users')
     .find({ email: _email })
     .assign({ email: _newEmail, password: _newPassword})

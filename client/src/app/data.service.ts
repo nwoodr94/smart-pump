@@ -21,7 +21,7 @@ export class DataService{
   }
 
 
-  // HTTP Methods
+  // HTTP Methods and Options
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

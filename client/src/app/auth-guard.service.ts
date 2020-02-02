@@ -7,6 +7,7 @@ import { AuthenticateService } from './authenticate.service';
 export class AuthGuardService implements CanActivate {
   constructor(public auth: AuthenticateService, public router: Router) {}
   
+  // If the user has not been handled by AuthenticateService, return to login
   canActivate(): boolean {
     if (!this.auth.isAuthenticated()) {
       this.router.navigate(['login']);

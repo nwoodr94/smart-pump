@@ -1,15 +1,15 @@
 <body>
     <div class="content">
-      <img src="../../assets/logo.png" />
+      <img src="../../assets/logo.png" alt="logo"/>
       <br />
       <form>
         <div class="form-group">
           <label for="exampleInputEmail1">Username</label>
-          <input type="email" class="form-control" #email>
+          <input type="email" class="form-control" #email autocomplete="false">
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" #password>
+          <input type="password" class="form-control" #password autocomplete="false">
         </div>
         <br />
         <button type="submit" class="btn btn-secondary" (click)="login(email.value, password.value)">Login</button>

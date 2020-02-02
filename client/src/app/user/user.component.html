@@ -1,31 +1,41 @@
 <div class="content">
 
-<img src={{user.picture}}/>
-<br />
-<ul>
-    <li>{{user.name.first}} {{user.name.last}}</li>
-    <li>{{user.balance}}</li>
-    <li>{{user.email}}</li>
-    <li>{{user.address}}</li>
-</ul>
+  <img src={{user.picture}} alt="profile" />
+  <br />
+  <div *ngIf="!switch">
+  <div class="buttons">
+    <button *ngIf="!user.newEmail || !user.newPassword" class="btn btn-secondary" (click)="toggle()">Edit</button>
+    <button class="btn btn-secondary" (click)="logout()">Logout</button>
+  </div>
 
-<button class="btn btn-secondary" (click)="toggle()">Edit</button>
+    <ul>
+      <li>{{user.name.first}} {{user.name.last}}</li>
+      <li>{{user.balance}}</li>
+      <li *ngIf="!user.newEmail">{{user.email}}</li>
+      <li *ngIf="user.newEmail">{{user.newEmail}}</li>
+      <li>{{user.address}}</li>
+    </ul>
 
-<br />
-<br />
-<form *ngIf="switch">
+
+  </div>
+
+  <form *ngIf="switch">
+    <div class="buttons">
+      <button type="submit" class="btn btn-secondary" (click)="edit(user.newEmail, user.newPassword)">Submit</button>
+      <button class="btn btn-secondary" (click)="toggle()">Cancel</button>
+    </div>
     <div class="form-group">
       <label for="exampleInputEmail1">Enter New Email</label>
-      <input type="email" class="form-control" #newEmail>
+      <input type="email" class="form-control" [(ngModel)]="user.newEmail" [ngModelOptions]="{standalone: true}"
+        #newEmail autocomplete="false">
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Enter New Password</label>
-      <input type="password" class="form-control" #newPassword>
+      <input type="password" class="form-control" [(ngModel)]="user.newPassword" [ngModelOptions]="{standalone: true}"
+        #newPassword autocomplete="false">
     </div>
     <br />
-    <button type="submit" class="btn btn-secondary" (click)="edit(newEmail.value, newPassword.value)">Submit</button>
-    <br />
-    <button class="btn btn-secondary" (click)="toggle()">Cancel</button>
+
   </form>
 
 
