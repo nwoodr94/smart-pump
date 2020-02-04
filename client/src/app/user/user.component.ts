@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from '../user-model';
-import { DataService } from '../data.service'
+import { User } from './user-model';
+import { DataService } from '../services/data.service'
 import { Router } from '@angular/router';
-import { AuthenticateService } from '../authenticate.service';
+import { AuthenticateService } from '../services/authenticate.service';
 
 @Component({
   selector: 'app-user',

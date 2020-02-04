@@ -71,11 +71,6 @@ function getUser(_email, _password) {
 
 function updateUser(_email, _newEmail, _password, _newPassword) {
 
-  console.log(_email);
-  console.log(_newEmail);
-  console.log(_password);
-  console.log(_newPassword);
-
   db.get('users')
     .find({ email: _email })
     .assign({ email: _newEmail, password: _newPassword})
@@ -85,8 +80,8 @@ function updateUser(_email, _newEmail, _password, _newPassword) {
     .find({ email: _newEmail, password: _newPassword })
     .value();
 
-  console.log(user);
-
   return user;
 }
 
+module.exports.getUser = getUser;
+module.exports.updateUser = updateUser;

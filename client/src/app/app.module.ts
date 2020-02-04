@@ -8,9 +8,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
-import { AuthenticateService } from './authenticate.service';
-import { AuthGuardService } from './auth-guard.service';
-import { DataService } from './data.service';
+import { AuthenticateService } from './services/authenticate.service';
+import { AuthGuardService } from './services/auth-guard.service';
+import { DataService } from './services/data.service';
 
 
 @NgModule({

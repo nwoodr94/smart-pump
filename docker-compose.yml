@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+    client:
+        hostname: localhost
+        build: ./client/
+        volumes: 
+            - "./client:/client"
+        ports: 
+            - "4200:4200"
+    api:
+        hostname: localhost
+        build: ./api/
+        volumes: 
+            - "./api:/usr/src/api"
+        ports: 
+            - "8000:8000"
