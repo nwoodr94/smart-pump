@@ -26,7 +26,7 @@ import { DataService } from './services/data.service';
     HttpClientModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: function  tokenGetter() { 
+        tokenGetter: function  tokenGetter() {
         return localStorage.getItem('token');
         }
       }

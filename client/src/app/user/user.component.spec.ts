@@ -16,8 +16,8 @@ describe('UserComponent', () => {
     TestBed.configureTestingModule({
       imports: [ FormsModule, RouterTestingModule ],
       declarations: [ UserComponent ],
-      providers: [ 
-        DataService, 
+      providers: [
+        DataService,
         { provide: HttpClient, useValue: spyService },
       ],
       schemas: [

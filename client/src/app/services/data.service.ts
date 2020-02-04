@@ -4,21 +4,13 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class DataService{
+export class DataService {
 
 
   constructor(private http: HttpClient) {}
 
   // User handling between login and profile
-  private user: User; 
-
-  setData(user: User){
-    this.user = user;
-  }
-
-  getData():User {
-    return this.user;
-  }
+  private user: User;
 
 
   // Application HTTP Methods
@@ -26,6 +18,14 @@ export class DataService{
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
   private URI = 'http://localhost:8000/';
+
+  setData(user: User) {
+    this.user = user;
+  }
+
+  getData(): User {
+    return this.user;
+  }
 
   public post(user: User): Observable<User> {
     return this.http.post<User>(this.URI, user, this.httpOptions);

@@ -6,9 +6,9 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 describe('DataService', () => {
   const spyService = jasmine.createSpyObj('HttpClient', ['get', 'post', 'patch']);
   beforeEach(() => TestBed.configureTestingModule({
-    providers: [ 
+    providers: [
       { provide: HttpClient, useValue: spyService },
-      JwtHelperService ] 
+      JwtHelperService ]
   }));
 
   it('should be created', () => {

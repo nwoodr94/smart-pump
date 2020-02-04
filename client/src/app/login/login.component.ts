@@ -14,20 +14,19 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private dataService: DataService) {}
 
+  user: User = new User();
+
   ngOnInit() {
   }
-
-  user: User = new User()
 
   // Login the user
   login(email, password) {
 
-    // Form Validation
-    if (email == ""
-      || password == "") {
+    // Simple Form Validation
+    if (email === ''
+      || password === '') {
       return;
-    }
-    else {
+    } else {
       this.user.email = email;
       this.user.password = password;
 
@@ -41,7 +40,7 @@ export class LoginComponent implements OnInit {
         (err: any) => {
           console.log(err);
         }
-      )
+      );
     }
   }
 
