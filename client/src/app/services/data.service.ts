@@ -12,13 +12,6 @@ export class DataService {
   // User handling between login and profile
   private user: User;
 
-
-  // Application HTTP Methods
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-  private URI = 'http://localhost:8000/';
-
   setData(user: User) {
     this.user = user;
   }
@@ -26,6 +19,13 @@ export class DataService {
   getData(): User {
     return this.user;
   }
+
+
+  // Application HTTP Methods
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+  private URI = 'http://localhost:8000/';
 
   public post(user: User): Observable<User> {
     return this.http.post<User>(this.URI, user, this.httpOptions);
